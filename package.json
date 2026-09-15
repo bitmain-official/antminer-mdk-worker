@@ -1,0 +1,50 @@
+{
+  "name": "antminer-mdk-worker",
+  "version": "0.1.0",
+  "description": "Bitmain Antminer Worker plugin for Tether MDK",
+  "keywords": [
+    "tether",
+    "mdk",
+    "bitmain",
+    "antminer"
+  ],
+  "author": "Tether",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "type": "commonjs",
+  "files": [
+    "lib/",
+    "src/",
+    "mock/",
+    "scripts/",
+    "mdk-contract.json",
+    "smoke.config.js",
+    "README.md",
+    "USAGE.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "mock": "node scripts/run-mock.js",
+    "test": "npm run lint && npm run test:unit && npm run test:integration",
+    "test:unit": "brittle tests/unit/*.test.js",
+    "test:integration": "NODE_ENV=test brittle tests/integration/runtime-v2.test.js",
+    "test:coverage": "NODE_ENV=test brittle --coverage tests/unit/*.test.js tests/integration/runtime-v2.test.js",
+    "test:live": "node scripts/test-live-commands.js"
+  },
+  "dependencies": {
+    "debug": "4.4.1",
+    "node-fetch": "2.7.0"
+  },
+  "devDependencies": {
+    "brittle": "3.16.3",
+    "standard": "17.1.2"
+  },
+  "overrides": {
+    "brace-expansion": "5.0.9"
+  }
+}
